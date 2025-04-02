@@ -141,6 +141,55 @@ int main(){
         cout << arr[i]<< " ";
     }
 
+## 퀵정렬
+```c++
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int n;
+int arr[100000];
+
+int part(int low, int high){
+    int piviot = arr[high];
+    int l = low-1;
+
+    
+    for(int i=low; i<high; i++){
+        if(arr[i]<piviot){
+            l++;
+            swap(arr[l],arr[i]);
+        }
+    }
+    swap(arr[l+1],arr[high]);
+    return l+1;
+}
+
+void al(int low, int high){
+    if(low < high){
+    int pos = part(low, high);
+
+    al(low, pos-1);
+    al(pos+1,high);
+    }
+}
+
+int main() {
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    al(0,n-1);
+     for(int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+
+    return 0;
+}
+```
+
 
 }
 ```

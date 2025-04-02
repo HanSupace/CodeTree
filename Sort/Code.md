@@ -191,7 +191,63 @@ int main() {
     return 0;
 }
 ```
+## 힙정렬
+```c++
+#include <iostream>
+#include <algorithm>
 
+using namespace std;
+int arr[101];
+int n,b;
+
+void heap(int n, int i){
+    int lagest=i;
+    int l = i*2;
+    int r = i*2+1;
+
+    if(l<=n && arr[l]>arr[lagest]){
+        lagest=l;
+    }
+    
+    if(r<=n && arr[r]>arr[lagest]){
+        lagest=r;
+    }
+    if(lagest!=i){
+        swap(arr[lagest],arr[i]);
+        heap(n,lagest);
+    }
+}
+
+void Hsort(){
+    for(int i=n/2; i>=1; i--){
+        heap(n,i);
+    }
+    for(int i=n; i>=1; i--){
+        swap(arr[1],arr[i]);
+        heap(i-1,1);
+    }
+}
+
+int main(){
+    
+    cin >>n;
+
+    
+    
+    for(int i=1; i<=n; i++){
+        cin >> b;
+        arr[i]=b;
+    }
+
+    Hsort();
+
+
+
+    for(int i=1; i<=n; i++){
+        cout << arr[i] << " ";
+    }
+}
+```
 
 
 

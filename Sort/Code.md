@@ -101,6 +101,57 @@ int main(){
 }
 ```
 
+## 기수정렬
+```c++
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int n;
+int arr[100000];
+
+int main() {
+    cin >> n;
+
+    vector<int> v[10];
+
+    int sort_arr[100001];
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    int pos=1;
+    for(int i=0; i<6; i++){
+        for(int s=0; s<n; s++){
+            int p = arr[s]/pos%10;
+            v[p].push_back(arr[s]);
+        }
+        pos*=10;
+        int index=0;
+        for(int s=0; s<10; s++){
+            for(int j=0; j<v[s].size();j++){
+                sort_arr[index++]=v[s][j];
+
+            }
+                v[s].clear(); // 꼭 초기화 해주기
+
+        }
+        for(int s=0; s<n; s++){
+            arr[s]=sort_arr[s];
+        }
+    }
+    for (int i = 0; i < n; i++) {
+        cout << arr[i]<<" ";
+    }
+
+
+    return 0;
+}
+```
+
+
 ## 병합정렬
 ```c++
 #include <iostream>

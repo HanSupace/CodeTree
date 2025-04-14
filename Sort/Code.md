@@ -155,42 +155,63 @@ int main() {
 ## 병합정렬
 ```c++
 #include <iostream>
-#include <vector>
-
 using namespace std;
+int arr[100001];
+int m_arr[100001];
+int n;
+
+void merge(int left, int mid, int right){
+    int l=left;
+    int j=mid+1;
+    int index=left;
+    while(l<=mid && j<=right){
+        if(arr[l]<arr[j]){
+            m_arr[index++]=arr[l];
+            l++;
+        }else{
+            m_arr[index++]=arr[j];
+            j++;
+        }
+    }
+
+    while(l<=mid){
+        m_arr[index++]=arr[l];
+        l++;
+    }
+    while(j<=right){
+        m_arr[index++]=arr[j];
+        j++;
+    }
+    
+
+    for(int i=left; i<=right;i++){
+        arr[i]=m_arr[i];
+    }
+}
+
+void m_sort(int left, int right){
+    int mid=(left+right)/2;
+    if(left<right){
+        m_sort(left,mid);
+        m_sort(mid+1,right);
+        merge(left,mid,right);
+    }
+}
 
 int main(){
-    int n;
-    cin >> n;
-
-    int arr[100001];
-    vector<int> new_arr[10];
     
-    for(int i=0 ;i<n; i++){
+    
+    cin >> n;
+    for(int i=0; i<n;i++){
         cin >> arr[i];
     }
 
-    int pos = 10;
-    int p=1;
-
-    for(int i=0; i<6; i++){
-        for(int j=0; j<n; j++){
-            int c = (arr[j]/p)%pos;
-            new_arr[c].push_back(arr[j]);
-        }
-        int index=0;
-        for(int j=0; j<10; j++){
-            for(int s=0; s<new_arr[j].size(); s++){
-                arr[index++]=new_arr[j][s];
-            }
-            new_arr[j].clear();
-        }
-        p*=10;
-    }   
+    m_sort(0,n-1);
 
     for(int i=0; i<n; i++){
-        cout << arr[i]<< " ";
+        cout << arr[i] << " "; 
     }
+
 }
 ```
 

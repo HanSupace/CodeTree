@@ -118,6 +118,22 @@ int bst_insert(int x){
 }
 ```
 
+# DFS
+```c++
+void DFS(int cur){
+    isVisited[cur] = true;
+    cout << "방문한 노드 : " << cur << '\n';
+    
+    // 현재 정점과 간선으로 연결되어 있는 모든 정점들을 둘러본다.
+    for(int i = 0; i < graph[cur].size(); i++){
+    	int next = graph[cur][i];
+        // 만일 방문하지 않았다면 매개변수로 전달하여 DFS를 재귀적으로 호출한다.
+        if(!isVisited[next]){
+        	DFS(next);
+        }
+    }
+```
+
 
 # BFS
 '''c++

@@ -136,7 +136,7 @@ void DFS(int cur){
 
 
 # BFS
-'''c++
+```c++
 bool visited[9];
 vector<int> graph[9];
 
@@ -162,4 +162,4 @@ void bfs(int start) {
         }
     }
 }
-'''
+```

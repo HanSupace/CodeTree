@@ -75,6 +75,50 @@ int lower_bound(int target){
 }
 ```
 
+# 이진탐색트리
+'''c++
+int bst_search(int x){
+    int node = arr[1];
+    while(arr[node]!=null && arr[node]!=x){
+        if(arr[node]>x){
+            node*=2;
+        }
+        else{
+            node = node*2+1;
+        }
+    }
+    return node;
+}
+'''
+
+# 이진탐색트리에서의 삽입
+'''c++
+int bst_insert(int x){
+    int node = arr[1];
+    int parent = arr[1];
+
+    while(node!=null){
+        parent = node;
+        if(arr[node]>x){
+            node*=2;
+        }
+        else{
+            node=2*node+1;
+        }
+    }
+    if(arr[parent]==null){
+        arr[0] = arr[x];
+    }
+    else if(arr[parent]>x){
+        arr[parent*2] = arr[x];
+    }
+    else if(arr[parent]<x){
+        arr[parent*2+1] = arr[x];
+    }
+}
+'''
+
+
 # BFS
 '''c++
 bool visited[9];

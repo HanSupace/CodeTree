@@ -76,7 +76,7 @@ int lower_bound(int target){
 ```
 
 # 이진탐색트리
-'''c++
+```c++
 int bst_search(int x){
     int node = arr[1];
     while(arr[node]!=null && arr[node]!=x){
@@ -89,10 +89,10 @@ int bst_search(int x){
     }
     return node;
 }
-'''
+```
 
 # 이진탐색트리에서의 삽입
-'''c++
+```c++
 int bst_insert(int x){
     int node = arr[1];
     int parent = arr[1];
@@ -116,7 +116,7 @@ int bst_insert(int x){
         arr[parent*2+1] = arr[x];
     }
 }
-'''
+```
 
 
 # BFS
